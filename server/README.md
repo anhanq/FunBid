@@ -1,13 +1,15 @@
 # SETUP.
 
 ### Prerequisite
-- Python3
+- Ubuntu 16.04, 18.04 LTS
+
+- Python3.6
 
 https://www.python.org/downloads/
 
 - Virtualenv
 ```
-pip install virtualenv
+pip3 install virtualenv
 ```
 
 ### Setting up
@@ -26,6 +28,21 @@ Can also stop by:
 deactivate
 ```
 
+- Install MySQL:
+```
+sudo apt-get install mysql-server libmysqlclient-dev
+```
+
+- Config MySQL:
+``
+sudo mysql
+
+mysql > CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin'
+
+mysql > GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
+
+```
+
 - Install dependencies:
 ```
 pip install -r requirements.txt
@@ -36,4 +53,4 @@ pip install -r requirements.txt
 python app.py
 ```
 
-- Access http://localhost:5000
+- Access http://127.0.0.1:5000

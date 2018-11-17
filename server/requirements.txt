@@ -15,3 +15,6 @@ typed-ast==1.1.0
 Werkzeug==0.14.1 
 wrapt==1.10.11
 Flask-SQLAlchemy==2.3.2
+Flask-WTF==0.14.2
+WTForms==2.2.1
+eventlet==0.24.1
