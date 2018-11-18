@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_socketio import SocketIO
 from .config import Config
-
+from flask_migrate import Migrate
 socketio = SocketIO()
 
 
@@ -21,7 +21,9 @@ def create_app(debug=False):
     db.init_app(app)
     # with app.app_context():
     #     db.create_all()
+    migrate = Migrate(app, db)
 
     socketio.init_app(app)
     return app
 
+from .models import user

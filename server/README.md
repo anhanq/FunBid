@@ -1,4 +1,4 @@
-# SETUP.
+# FUNBID SERVER
 
 ### Prerequisite
 - Ubuntu 16.04, 18.04 LTS
@@ -34,13 +34,14 @@ sudo apt-get install mysql-server libmysqlclient-dev
 ```
 
 - Config MySQL:
-``
+```
 sudo mysql
 
 mysql > CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin'
 
 mysql > GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
 
+mysql > CREATE DATABASE fundib;
 ```
 
 - Install dependencies:
@@ -48,9 +49,37 @@ mysql > GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
 pip install -r requirements.txt
 ```
 
-- Start the project:
+- Init database:
 ```
-python app.py
+$ export FLASK_APP=funbid.py
+$ flask db upgrade
 ```
 
-- Access http://127.0.0.1:5000
+- Start app:
+```
+$ python funbid.py
+or 
+$ flask run
+```
+
+- Create account (no different between admin and user at the moment)
+```
+$ curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"username":"admin","password":"admin"}' \
+  http://127.0.0.1:5000/register
+```
+
+
+** Default route is for testing socketio only **
+
+
+
+### Test route
+
+- Get user's profile: /users/id
+```
+curl --request GET \
+  -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjF9.z9WZeWU7tB9t0D8hqYrrIjRsAxaUfcMw9Maxe8on0E4" \
+  http://127.0.0.1:5000/users/1
+```
