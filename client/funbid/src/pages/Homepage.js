@@ -1,55 +1,29 @@
 import React, { Component } from 'react';
-import { Button, Table } from 'semantic-ui-react';
+import { Button, Table, Card } from 'semantic-ui-react';
+import Auction from '../components/Auction';
 
 class Homepage extends Component {
 
   render () {
     return (
       <div>
-        <Table
-          selectable
-          celled
-          compact
-        >
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>
-                Robot ID
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                Location
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                Current Job
-              </Table.HeaderCell>
-              <Table.HeaderCell/>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {data.map(({id, location, job}) => (
-              <Table.Row key={id}>
-                <Table.Cell width={3}>{id}</Table.Cell>
-                <Table.Cell width={5}>{location}</Table.Cell>
-                <Table.Cell width={5}>{job}</Table.Cell>
-                <Table.Cell width={3}>
-                  <Button size='small' Button color='red'>Remove</Button>
-                </Table.Cell>
-              </Table.Row>
+        <Card.Group>
+            {data.map(item => (
+              <Auction key={item.id} data={item}>
+              </Auction>
             ))}
-          </Table.Body>
-        </Table>
+        </Card.Group>
       </div>
     );
   }
 }
 
 const data = [
-  {id: 1, location: 'abc', job: 'abcdef'},
-  {id: 1, location: 'abc', job: 'abcdef'},
-  {id: 1, location: 'abc', job: 'abcdef'},
-  {id: 1, location: 'abc', job: 'abcdef'},
-  {id: 1, location: 'abc', job: 'abcdef'},
-  {id: 1, location: 'abc', job: 'abcdef'},
+  {id: 1, price: 100, start: 0, remain: 10, end: 0, bidder: "Hung"},
+  {id: 1, price: 100, start: 0, remain: 10, end: 0, bidder: "Hung"},
+  {id: 1, price: 100, start: 0, remain: 10, end: 0, bidder: "Hung"},
+  {id: 1, price: 100, start: 0, remain: 10, end: 0, bidder: "Hung"},
+  {id: 1, price: 100, start: 0, remain: 10, end: 0, bidder: "Hung"},
 ];
 
 export default Homepage;

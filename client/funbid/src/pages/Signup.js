@@ -1,59 +1,37 @@
 import React, { Component } from 'react';
-import { Button, Form, Header, Table } from 'semantic-ui-react';
+import {Button, Form, Grid, Header, Image, Message, Segment, Table} from 'semantic-ui-react';
 
 class Signup extends Component {
 
   render () {
     return (
-      <div>
-        <Table
-          selectable
-          celled
-          compact
-        >
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>
-                Shelf ID
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                Location
-              </Table.HeaderCell>
-              <Table.HeaderCell>
-                Stored
-              </Table.HeaderCell>
-              <Table.HeaderCell/>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {data.map(({id, location, stored}) => (
-              <Table.Row key={id}>
-                <Table.Cell width={3}>{id}</Table.Cell>
-                <Table.Cell width={5}>{location}</Table.Cell>
-                <Table.Cell width={5}>{stored}</Table.Cell>
-                <Table.Cell width={3}>
-                  <Button size='small'>Edit</Button>
-                </Table.Cell>
-              </Table.Row>
-            ))}
-          </Table.Body>
-        </Table>
-        <Header>Edit Shelf</Header>
-        <Form>
-          <Form.Group widths='equal'>
-            <Form.Input fluid label='Shelf ID' readOnly />
-            <Form.Input fluid label='Location' placeholder='New Location' />
-          </Form.Group>
-          <Button type='submit'>Update</Button>
-          <Button color='red' floated='right'>Remove</Button>
-        </Form>
-        <Header>New Shelf</Header>
-        <Form>
-          <Form.Group widths='equal'>
-            <Form.Input fluid label='Location' placeholder='Location' />
-          </Form.Group>
-          <Button type='submit'>Create</Button>
-        </Form>
+      <div className='signup-form'>
+        <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            <Header as='h2' color='teal' textAlign='center'>
+              <Image src='/logo.png' /> Signup for FunBid
+            </Header>
+            <Form size='large'>
+              <Segment stacked>
+                <Form.Input fluid icon='user' iconPosition='left' placeholder='Username'/>
+                <Form.Input
+                  fluid
+                  icon='lock'
+                  iconPosition='left'
+                  placeholder='Password'
+                  type='password'
+                />
+
+                <Button color='teal' fluid size='large'>
+                  Signup
+                </Button>
+              </Segment>
+            </Form>
+            <Message>
+              Already have an account? <a href='/login'>Login</a>
+            </Message>
+          </Grid.Column>
+        </Grid>
       </div>
     );
   }

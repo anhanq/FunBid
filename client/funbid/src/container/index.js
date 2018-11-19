@@ -11,6 +11,7 @@ import Signup from '../pages/Signup';
 import MyMenu from '../components/Menu';
 
 class MyContainer extends React.Component {
+
   constructor (props) {
     super(props);
     this.state = {
