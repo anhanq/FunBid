@@ -1,0 +1,11 @@
+.card-login {
+  width: 40%;
+  margin: 2rem auto;
+}
+
+@media only screen and (max-width: 767px) {
+  .card-login {
+    width: 80%;
+    margin: 2rem auto;
+  }  
+}

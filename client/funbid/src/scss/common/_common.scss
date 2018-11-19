@@ -1,0 +1,26 @@
+body {
+  color: $text-color;
+  font-family: 'Open Sans', sans-serif;
+  font-size: .8rem;
+}
+
+button:focus,
+span:focus,
+input:focus,
+:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+a,
+.pointer {
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: $blue1;
+}
+
+.btn-primary:hover {
+  background-color: $blue2;
+}
