@@ -25,11 +25,21 @@ def login():
 def register_user():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
+    if not username:
+        return jsonify({"message": "username invalid!"}), 400
+
     if username and not re.match(r"^(?=.{5,10}$)[a-zA-Z]+[a-zA-Z0-9]", username):
         return jsonify({"message": "username invalid!"}), 400
     
-    if password and not re.match(r"^(?=.{5,}$)[^\S]", password):
+    if not password:
         return jsonify({"message": "password invalid!"}), 400
+
+    if password:
+        if len(password) < 4:
+            return jsonify({"message": "password invalid!"}), 400 
+        if not re.match(r"^[\S]*$", password):
+            return jsonify({"message": "password invalid!"}), 400
+            
     if username and User.find_by_username(username):
         return jsonify({"message": "Username existed"}), 400
     
